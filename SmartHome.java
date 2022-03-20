@@ -12,8 +12,10 @@ import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.shape.Line;
 
 public class SmartHome extends Application{
    Boolean room1IsOn=false;
@@ -27,39 +29,41 @@ public class SmartHome extends Application{
     @Override
     public void start(Stage primaryStage){
        
-        GridPane  gridPane = new GridPane(); 
-        gridPane.setAlignment(Pos.CENTER);
-        gridPane.setPadding(new Insets(11.5, 12.5,13.5,14.5));
-        gridPane.setHgap(10);
-        gridPane.setVgap(6);
+        Pane  pane = new Pane(); 
+        
+      
   Rectangle rectangle = new Rectangle();
-       rectangle.setX(100);
-       rectangle.setY(40);
        rectangle.setWidth(200);
        rectangle.setHeight(220);
        rectangle.setFill(Color.GREY);
        rectangle.setStroke(Color.BLACK);
        rectangle.setStrokeWidth(2);
+       StackPane stackpane = new StackPane();
+       stackpane.setPadding(new Insets(39,0,0,100));
+       stackpane.getChildren().addAll(rectangle, new Label("Room1"));
+       
 
        Rectangle rectangle1 = new Rectangle();
-       rectangle1.setX(300);
-       rectangle1.setY(160);
        rectangle1.setWidth(200);
        rectangle1.setHeight(80);
        rectangle1.setFill(Color.GREY);
        rectangle1.setStroke(Color.BLACK);
        rectangle1.setStrokeWidth(2);
+       StackPane stackpane1 = new StackPane();
+       stackpane1.setPadding(new Insets(159,0,0,300));
+       stackpane1.getChildren().addAll(rectangle1, new Label("Room2"));
 
-        Rectangle rectangle2 = new Rectangle();
-         rectangle2.setX(300);
-       rectangle2.setY(40);
+       Rectangle rectangle2 = new Rectangle();
        rectangle2.setWidth(100);
        rectangle2.setHeight(120);
        rectangle2.setFill(Color.GREY);
        rectangle2.setStroke(Color.BLACK);
        rectangle2.setStrokeWidth(2);
+       StackPane stackpane2 = new StackPane();
+       stackpane2.setPadding(new Insets(39,0,0,300));
+       stackpane2.getChildren().addAll(rectangle2, new Label("Room3"));
 
-        Rectangle rectangle3 = new Rectangle();
+      Rectangle rectangle3 = new Rectangle();
         rectangle3.setX(400);
        rectangle3.setY(40);
        rectangle3.setWidth(100);
@@ -67,6 +71,9 @@ public class SmartHome extends Application{
        rectangle3.setFill(Color.GREY);
        rectangle3.setStroke(Color.BLACK);
        rectangle3.setStrokeWidth(2);
+       StackPane stackpane3 = new StackPane();
+       stackpane3.setPadding(new Insets(39,0,0,400));
+       stackpane3.getChildren().addAll(rectangle3, new Label("Room4"));
 
         Rectangle rectangle4 = new Rectangle();
        rectangle4.setX(500);
@@ -76,7 +83,9 @@ public class SmartHome extends Application{
        rectangle4.setFill(Color.GREY);
        rectangle4.setStroke(Color.BLACK);
        rectangle4.setStrokeWidth(2);
-       
+       StackPane stackpane4 = new StackPane();
+       stackpane4.setPadding( new Insets(39,0,0,500));
+       stackpane4.getChildren().addAll(rectangle4, new Label("Room5"));
        
         Rectangle rectangle5 = new Rectangle();
         rectangle5.setX(300);
@@ -86,6 +95,9 @@ public class SmartHome extends Application{
        rectangle5.setFill(Color.GREY);
        rectangle5.setStroke(Color.BLACK);
        rectangle5.setStrokeWidth(2);
+       StackPane stackpane5 = new StackPane();
+       stackpane5.setPadding( new Insets(240,0,0,300));
+       stackpane5.getChildren().addAll(rectangle5, new Label("Room6"));
        
        Rectangle rectangle6 = new Rectangle();
       rectangle6.setX(460);
@@ -95,6 +107,11 @@ public class SmartHome extends Application{
        rectangle6.setFill(Color.GREY);
        rectangle6.setStroke(Color.BLACK);
        rectangle6.setStrokeWidth(2);
+       StackPane stackpane6 = new StackPane();
+       stackpane6.setPadding(new Insets(240,0,0,460));
+       stackpane6.getChildren().addAll(rectangle6, new Label("room7"));
+      
+
       Button button1 = new Button("AllRooms ON/OFF");
 
       button1.setOnAction(e->{
@@ -145,10 +162,10 @@ public class SmartHome extends Application{
         }
       });
       
-
-      gridPane.add(button1,0,5);
-      gridPane.add(button2,0,6);
-      gridPane.add(button3,0,7);
+      VBox vbox = new VBox();
+      vbox.setSpacing(20);
+      vbox.setAlignment(Pos.CENTER);
+      vbox.getChildren().addAll(button1, button2, button3);
 
       //Button definition
       Button button4 =new Button ("Room2 ON/OFF");
@@ -187,9 +204,10 @@ public class SmartHome extends Application{
         }
       });
 
-      gridPane.add(button4,1,5);
-      gridPane.add(button5,1,6);
-      gridPane.add(button6,1,7);
+      VBox vbox1 = new VBox();
+      vbox1.setSpacing(20);
+      vbox1.setAlignment(Pos.CENTER);
+      vbox1.getChildren().addAll(button4, button5, button6);
 
       //Button definition
       Button button7 =new Button ("Room5 ON/OFF");
@@ -228,20 +246,73 @@ public class SmartHome extends Application{
       });
 
 
-      gridPane.add(button7,2,5);
-      gridPane.add(button8,2,6);
-      gridPane.add(button9,2,7);
+      VBox vbox2 = new VBox();
+      vbox2.setSpacing(20);
+      vbox2.setAlignment(Pos.CENTER);
+      vbox2.getChildren().addAll(button7, button8, button9);
 
-      Pane pane = new Pane();
-      Group group = new Group();
-      pane.getChildren().addAll(rectangle,rectangle1,rectangle2,rectangle3,rectangle4,rectangle5,rectangle6);
-      group.getChildren().addAll(pane,gridPane);
+      HBox hbox = new HBox();
+      hbox.setSpacing(50);
+      hbox.setPadding(new Insets(450,0,0,225));
+      hbox.getChildren().addAll(vbox, vbox1, vbox2);
 
-    Scene scene = new Scene(group,800,600);
+      Line line1 = new Line();
+      line1.setStrokeWidth(5);
+      line1.setStartX(180);
+      line1.setEndX(280);
+      line1.setStartY(257);
+      line1.setEndY(257);
+
+      Line line2 = new Line();
+      line2.setStrokeWidth(5);
+      line2.setStartX(330);
+      line2.setEndX(360);
+      line2.setStartY(240);
+      line2.setEndY(240);
+
+       Line line3 = new Line();
+      line3.setStrokeWidth(5);
+      line3.setStartX(330);
+      line3.setEndX(360);
+      line3.setStartY(160);
+      line3.setEndY(160);
+
+      Line line4 = new Line();
+      line4.setStrokeWidth(5);
+      line4.setStartX(430);
+      line4.setEndX(460);
+      line4.setStartY(160);
+      line4.setEndY(160);
+
+      Line line5 = new Line();
+      line5.setStrokeWidth(5);
+      line5.setStartX(470);
+      line5.setEndX(490);
+      line5.setStartY(240);
+      line5.setEndY(240);
+
+      Line line6 = new Line();
+      line6.setStrokeWidth(5);
+      line6.setStartX(300);
+      line6.setEndX(300);
+      line6.setStartY(170);
+      line6.setEndY(210);
+
+      Line line7 = new Line();
+      line7.setStrokeWidth(5);
+      line7.setStartX(500);
+      line7.setEndX(500);
+      line7.setStartY(170);
+      line7.setEndY(210);
+
+      pane.getChildren().addAll(hbox,stackpane,stackpane1,stackpane2,stackpane3,stackpane4,stackpane5,stackpane6
+                ,line1,line2,line3,line4,line5,line6,line7);  
+    Scene scene = new Scene(pane,800,600);
     
     primaryStage.setTitle("My SmartHome"); // Set the stage title
     primaryStage.setResizable(false);
     primaryStage.setScene(scene); // Place the scene in the stage
+    primaryStage.getIcons().add(new Image("Imbwah.jpg"));
     primaryStage.show(); // Display  
     }
 
